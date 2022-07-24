@@ -1,7 +1,5 @@
 //! lending platforms
 
-use anchor_lang::prelude::*;
-
 /// represents a type of lending farm, which may be platform specific such as
 /// obtaining the highest yield % on a platform like tulip, or asset specific
 /// such as obtaining the highest yield % on a single asset like USDC,
@@ -9,7 +7,7 @@ use anchor_lang::prelude::*;
 /// since the enum is represented as a u64 type, numbers 0 -> 65535 are reserved
 /// for platform identifiers, while numbers 65536 and above are to be taken
 /// on a first come first serve basis
-#[derive(Debug, Clone, Copy, PartialEq, Eq, AnchorDeserialize, AnchorSerialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[repr(u64)]
 #[allow(non_camel_case_types)]
 pub enum Lending {

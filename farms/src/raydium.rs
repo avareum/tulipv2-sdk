@@ -1,7 +1,6 @@
 //! farm types supported by raydium
-use anchor_lang::prelude::*;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, AnchorSerialize, AnchorDeserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[repr(u64)]
 pub enum Raydium {
     ALEPHUSDC = 0_u64,

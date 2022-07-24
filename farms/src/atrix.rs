@@ -1,6 +1,4 @@
-use anchor_lang::prelude::*;
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq, AnchorSerialize, AnchorDeserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[repr(u64)]
 pub enum Atrix {
     SOLUSDC = 0,

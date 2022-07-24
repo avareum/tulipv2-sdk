@@ -32,10 +32,11 @@ pub mod unknown;
 use crate::{
     atrix::Atrix, lending::Lending, orca::Orca, quarry::Quarry, raydium::Raydium, unknown::Unknown,
 };
-use anchor_lang::prelude::*;
+
+use borsh::BorshSerialize;
 use tulip_arrform::{arrform, ArrForm};
 
-#[derive(Clone, Copy, PartialEq, Eq, AnchorSerialize, AnchorDeserialize, Debug)]
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
 /// the core type, which bundles together a "Farm Identifier" and "Farm Name" to uniquely
 /// identify vaults supported by Tulip V2.
 pub enum Farm {
@@ -116,8 +117,8 @@ impl Farm {
     pub fn serialize(&self) -> std::result::Result<Vec<u8>, std::io::Error> {
         let wire_type: [u64; 2] = (*self).into();
         let mut data_bytes = Vec::with_capacity(16);
-        data_bytes.extend_from_slice(&AnchorSerialize::try_to_vec(&wire_type[0])?);
-        data_bytes.extend_from_slice(&AnchorSerialize::try_to_vec(&wire_type[1])?);
+        data_bytes.extend_from_slice(&BorshSerialize::try_to_vec(&wire_type[0])?);
+        data_bytes.extend_from_slice(&BorshSerialize::try_to_vec(&wire_type[1])?);
         Ok(data_bytes)
     }
 }
